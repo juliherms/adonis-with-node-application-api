@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+   #banco de dados do postgres
+  postgres-database: 
+    container_name: postgres-database-prj
+    image: postgres:12.3
+    #Enviroment variable for DB name, user and password 
+    environment:
+      POSTGRES_USER: register
+      POSTGRES_PASSWORD: register
+      POSTGRES_DB: project_management
+    ports:
+      - 5432:5432
+ 
