@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-   #banco de dados do postgres
+  #banco de dados do postgres
   postgres-database: 
     container_name: postgres-database-prj
     image: postgres:12.3
@@ -12,4 +12,13 @@ services:
       POSTGRES_DB: project_management
     ports:
       - 5432:5432
+  #redis cache
+  redis-cache:
+    image: redis
+    container_name: redis-cache
+    ports:
+        - 6379:6379
+    expose:
+      - 6379
+  
  
