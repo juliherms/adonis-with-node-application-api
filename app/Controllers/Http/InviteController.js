@@ -41,6 +41,8 @@ class InviteController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+
+    console.log(request.team)
   }
 
   /**
