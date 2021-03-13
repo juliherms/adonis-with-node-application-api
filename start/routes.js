@@ -19,6 +19,8 @@ const Route = use('Route')
 //public routes
 //create a token
 Route.post('sessions','SessionController.store')
+//create user
+Route.post('users','UserController.store')
 
 
 //private routes - authentication required
@@ -31,3 +33,4 @@ Route.group(() => {
 Route.group(() => {
   Route.post('invites','InviteController.store')
 }).middleware(['auth','team']);
+
