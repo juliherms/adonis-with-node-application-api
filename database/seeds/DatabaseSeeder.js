@@ -31,9 +31,6 @@ class DatabaseSeeder {
       name: 'DevTeam',
       user_id: user.id
     })
-
-
-
   }
 }
 

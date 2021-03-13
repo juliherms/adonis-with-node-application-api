@@ -8,6 +8,7 @@ class Team extends Model {
     static boot () {
         super.boot()
     
+        //include slugfy with field name
         this.addTrait('@provider:Lucid/Slugify', {
           fields: {
             slug: 'name'
