@@ -16,5 +16,12 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+//public routes
 //create a token
 Route.post('sessions','SessionController.store')
+
+
+//private routes - authentication required
+Route.group(() => {
+  Route.resource('teams','TeamController').apiOnly()
+}).middleware('auth')
