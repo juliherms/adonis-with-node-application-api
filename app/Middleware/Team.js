@@ -26,10 +26,6 @@ class Team {
     auth.user.currentTeam = team.id
     request.team = team
 
-    await next()
-
-
-
     // call next to advance the request
     await next()
   }
