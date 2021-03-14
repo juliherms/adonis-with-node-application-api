@@ -32,5 +32,6 @@ Route.group(() => {
 //private routes - authentication and team header
 Route.group(() => {
   Route.post('invites','InviteController.store')
+  Route.resource('projects','ProjectController').apiOnly()
 }).middleware(['auth','team']);
 
