@@ -20,7 +20,8 @@ const providers = [
   'adonis-kue/providers/KueProvider',
   '@adonisjs/redis/providers/RedisProvider',
   '@adonisjs/mail/providers/MailProvider',
-  '@adonisjs/framework/providers/ViewProvider'
+  '@adonisjs/framework/providers/ViewProvider',
+  '@adonisjs/validator/providers/ValidatorProvider'
 ]
 
 /*
@@ -62,6 +63,7 @@ const aliases = {}
 const commands = []
 
 //create jobs
+//InvitationEmail - responsible to send e-mail for invite
 const jobs = ['App/Jobs/InvitationEmail']
 
 module.exports = { providers, aceProviders, aliases, commands, jobs }
