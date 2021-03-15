@@ -18,20 +18,42 @@ const Route = use('Route')
 
 //public routes
 //create a token
-Route.post('sessions','SessionController.store')
+Route.post('sessions','SessionController.store').validator('Session')
 //create user
-Route.post('users','UserController.store')
+Route.post('users','UserController.store').validator('User')
 
 
 //private routes - authentication required
 Route.group(() => {
-  Route.resource('teams','TeamController').apiOnly()
+  Route.resource('teams','TeamController')
+  .apiOnly()
+  .validator(
+    new Map(
+      [
+        [
+          ['teams.store','teams.update'],
+          ['Team']
+        ]
+      ]
+    )
+  )
 }).middleware('auth')
 
 
 //private routes - authentication and team header
 Route.group(() => {
-  Route.post('invites','InviteController.store')
-  Route.resource('projects','ProjectController').apiOnly()
+  Route.post('invites','InviteController.store').validator('Invite')
+  Route.resource('projects','ProjectController')
+  .apiOnly()
+  .validator(
+    new Map(
+      [
+        [
+          ['projects.store','projects.update'],
+          ['Project']
+        ]
+      ]
+    )
+  )
 }).middleware(['auth','team']);
 
