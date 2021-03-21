@@ -67,6 +67,7 @@ Route.group(() => {
     )
   )
   Route.get('members','MemberController.index')
-  Route.put('members/:id','MemberController.update').middleware('is:administrator') //only administrator team access
+  Route.put('members/:id','MemberController.update').middleware('is:administrator'), //only administrator team access
+  Route.get('permissions', 'PermissionController.show')
 }).middleware(['auth','team']);
 
