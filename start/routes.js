@@ -25,6 +25,7 @@ Route.post('users','UserController.store').validator('User')
 
 //private routes - authentication required
 Route.group(() => {
+  Route.get('roles','RoleController.index')
   Route.resource('teams','TeamController')
   .apiOnly()
   .validator(
@@ -42,7 +43,7 @@ Route.group(() => {
 
 //private routes - authentication and team header
 Route.group(() => {
-  Route.post('invites','InviteController.store').validator('Invite')
+  Route.post('invites','InviteController.store').validator('Invite').middleware('can:invites_create')
   Route.resource('projects','ProjectController')
   .apiOnly()
   .validator(
@@ -51,6 +52,16 @@ Route.group(() => {
         [
           ['projects.store','projects.update'],
           ['Project']
+        ]
+      ]
+    )
+  )
+  .middleware(
+    new Map(
+      [
+        [
+          ['projects.store','projects.update'],
+          ['can:project_create'] //check permission
         ]
       ]
     )
